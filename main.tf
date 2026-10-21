@@ -27,10 +27,11 @@ resource "aws_security_group" "web" {
     cidr_blocks = ["188.173.134.111/32"]
   }
   ingress {
+    description = "Allow HTTP from internet"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    security_groups = [module.network.alb_security_group_id]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
     from_port   = 0
